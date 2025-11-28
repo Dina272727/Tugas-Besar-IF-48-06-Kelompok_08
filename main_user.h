@@ -3,7 +3,6 @@
 #include "menu.h"
 #include "pelanggan.h"
 
-void menuUser(ListMenu &LM, ListPelanggan &LP);
 
 #endif
 
