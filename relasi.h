@@ -1,7 +1,10 @@
 #ifndef RELASI_H
 #define RELASI_H
-#include "menu.h"
-#include "pelanggan.h"
+#include <iostream>
+using namespace std;
+
+struct Menu;        
+struct Pelanggan;   
 
 struct Relasi {
     Pelanggan* pelanggan;
@@ -14,4 +17,3 @@ void hapusRelasi(Menu* M, string namaPelanggan);
 void tampilRelasi(Menu* M);
 
 #endif
-
