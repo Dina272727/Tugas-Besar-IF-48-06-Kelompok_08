@@ -3,40 +3,34 @@
 
 #include <iostream>
 #include <string>
+#include "relasi.h"
 using namespace std;
 
-struct Relasi;
-
-// alias pointer
 typedef struct Menu* adrMenu;
-typedef struct Relasi* adrRelasi;
 
-// NODE MENU (DLL)
 struct Menu {
     int id;
     string nama;
     int harga;
 
-    adrMenu next;
+    adrMenu next;     // DLL
     adrMenu prev;
 
-    adrRelasi firstRelasi; // menuju pelanggan yg pesan menu ini
+    adrRelasi firstRelasi;   // ke pelanggan (via Relasi)
 };
 
-// LIST MENU
 struct ListMenu {
     adrMenu first;
     adrMenu last;
 };
 
-// ==== FUNGSI-FUNGSI ====
+// Fungsi
 void buatListMenu(ListMenu &L);
 adrMenu buatMenu(int id, string nama, int harga);
-void tambahMenu(ListMenu &L, adrMenu m);
-void tambahMenuBerdasarkanHarga(ListMenu &L, adrMenu m);
+void tambahMenu(ListMenu &L, adrMenu M);
+void tambahMenuBerdasarkanHarga(ListMenu &L, adrMenu M);
 void hapusMenu(ListMenu &L, int id);
 adrMenu cariMenu(ListMenu L, int id);
 void tampilMenu(ListMenu L);
 
 #endif
-
