@@ -1,33 +1,42 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <iostream>
 #include <string>
 using namespace std;
 
-typedef struct Relasi Relasi;
+struct Relasi;
 
-typedef struct Menu {
+// alias pointer
+typedef struct Menu* adrMenu;
+typedef struct Relasi* adrRelasi;
+
+// NODE MENU (DLL)
+struct Menu {
     int id;
     string nama;
     int harga;
 
-    Menu* next;
-    Menu* prev;
+    adrMenu next;
+    adrMenu prev;
 
-    Relasi* firstRelasi;
-} Menu;
+    adrRelasi firstRelasi; // menuju pelanggan yg pesan menu ini
+};
 
-typedef struct ListMenu {
-    Menu* first;
-    Menu* last;
-} ListMenu;
+// LIST MENU
+struct ListMenu {
+    adrMenu first;
+    adrMenu last;
+};
 
+// ==== FUNGSI-FUNGSI ====
 void buatListMenu(ListMenu &L);
-Menu* buatMenu(int id, string nama, int harga);
-void tambahMenu(ListMenu &L, Menu* m);
-void tambahMenuBerdasarkanHarga(ListMenu &L, Menu* m);
+adrMenu buatMenu(int id, string nama, int harga);
+void tambahMenu(ListMenu &L, adrMenu m);
+void tambahMenuBerdasarkanHarga(ListMenu &L, adrMenu m);
 void hapusMenu(ListMenu &L, int id);
-Menu* cariMenu(ListMenu L, int id);
+adrMenu cariMenu(ListMenu L, int id);
 void tampilMenu(ListMenu L);
 
 #endif
+
