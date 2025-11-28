@@ -1,25 +1,26 @@
 #ifndef MENU_H
 #define MENU_H
+
 #include <string>
 using namespace std;
 
-struct Relasi; // forward
+typedef struct Relasi Relasi;
 
-struct Menu {
+typedef struct Menu {
     int id;
     string nama;
     int harga;
 
-    Menu *next;
-    Menu *prev;
+    Menu* next;
+    Menu* prev;
 
-    Relasi* firstRelasi; // daftar pelanggan yg memesan menu ini (SLL relasi)
-};
+    Relasi* firstRelasi;
+} Menu;
 
-struct ListMenu {
-    Menu *first;
-    Menu *last;
-};
+typedef struct ListMenu {
+    Menu* first;
+    Menu* last;
+} ListMenu;
 
 void buatListMenu(ListMenu &L);
 Menu* buatMenu(int id, string nama, int harga);
@@ -30,4 +31,3 @@ Menu* cariMenu(ListMenu L, int id);
 void tampilMenu(ListMenu L);
 
 #endif
-
