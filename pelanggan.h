@@ -1,42 +1,58 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef PELANGGAN_H
+#define PELANGGAN_H
 
 #include <string>
+#include "menu.h"
 using namespace std;
 
-struct InfoMenu {
-    string idMenu;
-    string namaMenu;
-    int harga;
+struct ElmPelanggan;
+struct ElmPesanan;
+
+typedef ElmPelanggan* addressPelanggan;
+typedef ElmPesanan* addressPesanan;
+
+struct ElmPesanan {
+    addressMenu menu;
+    addressPesanan next;
 };
 
-struct ElmMenu;
-typedef ElmMenu* addressMenu;
+struct ElmPelanggan {
+    string idPelanggan;
+    string namaPelanggan;
+    addressPesanan firstPesanan;
 
-struct ElmMenu {
-    InfoMenu info;
-    addressMenu next;
+    addressPelanggan next;
+    addressPelanggan prev;
 };
 
-struct ListMenu {
-    addressMenu first;
+struct ListPelanggan {
+    addressPelanggan first;
+    addressPelanggan last;
 };
 
-void createListMenu(ListMenu &LM);
-addressMenu alokasiMenu(InfoMenu x);
+void createListPelanggan(ListPelanggan &LP);
+addressPelanggan alokasiPelanggan(const string &id, const string &nama);
+addressPesanan alokasiPesanan(addressMenu m);
 
-void insertFirstMenu(ListMenu &LM, addressMenu P);
-void insertLastMenu(ListMenu &LM, addressMenu P);
-void insertAfterMenu(ListMenu &LM, addressMenu Prec, addressMenu P);
-void insertMenuByHarga(ListMenu &LM, addressMenu P);
+void insertFirstPelanggan(ListPelanggan &LP, addressPelanggan P);
+void insertLastPelanggan(ListPelanggan &LP, addressPelanggan P);
+void insertAfterPelanggan(addressPelanggan Prec, addressPelanggan P);
 
-bool deleteFirstMenu(ListMenu &LM, addressMenu &P);
-bool deleteLastMenu(ListMenu &LM, addressMenu &P);
-bool deleteAfterMenu(ListMenu &LM, addressMenu Prec, addressMenu &P);
-bool deleteMenuByID(ListMenu &LM, const string &idMenu, string &namaMenuDihapus);
+bool deleteFirstPelanggan(ListPelanggan &LP, addressPelanggan &P);
+bool deleteLastPelanggan(ListPelanggan &LP, addressPelanggan &P);
+bool deleteAfterPelanggan(addressPelanggan Prec, addressPelanggan &P);
 
-addressMenu findMenu(const ListMenu &LM, const string &idMenu);
-void printAllMenu(const ListMenu LM);
+addressPelanggan findPelanggan(const ListPelanggan &LP, const string &idPelanggan);
+
+void tambahPesanan(addressPelanggan pel, addressMenu m);
+bool hapusItemPesanan(addressPelanggan pel, const string &idMenu);
+void hapusSemuaPesanan(addressPelanggan pel);
+
+void printAllPelanggan(const ListPelanggan &LP);
+void printPelangganAndPesanan(const ListPelanggan &LP);
+void printPesananWithFormat(addressPelanggan pel);
+
+void removeMenuFromAllPelanggan(ListPelanggan &LP, const string &idMenu);
 
 #endif
 
