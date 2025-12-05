@@ -1,46 +1,43 @@
-#ifndef PELANGGAN_H
-#define PELANGGAN_H
+#ifndef MENU_H
+#define MENU_H
 
-#include <iostream>
 #include <string>
 using namespace std;
 
-typedef struct Pesanan* adrPesanan;
-typedef struct Pelanggan* adrPelanggan;
-
-// NODE PESANAN di dalam pelanggan
-struct Pesanan {
-    int idMenu;
+struct InfoMenu {
+    string idMenu;
     string namaMenu;
-    int qty;
-    adrPesanan next;
+    int harga;
 };
 
-// NODE PELANGGAN
-struct Pelanggan {
-    string nama;
-    adrPelanggan next;
-    adrPesanan firstPesanan;
+struct ElmMenu;
+typedef ElmMenu* addressMenu;
+
+struct ElmMenu {
+    InfoMenu info;
+    addressMenu next;
 };
 
-struct ListPelanggan {
-    adrPelanggan first;
+struct ListMenu {
+    addressMenu first;
 };
 
-// FUNGSI
-void buatListPelanggan(ListPelanggan &L);
-adrPelanggan buatPelanggan(string nama);
-void tambahPelanggan(ListPelanggan &L, adrPelanggan P);
-void hapusPelanggan(ListPelanggan &L, string nama);
-adrPelanggan cariPelanggan(ListPelanggan L, string nama);
-void tampilPelanggan(ListPelanggan L);
+void createListMenu(ListMenu &LM);
+addressMenu alokasiMenu(InfoMenu x);
 
-// Pesanan
-void tambahPesanan(adrPelanggan P, int idMenu, string namaMenu, int qty);
-void hapusPesanan(adrPelanggan P, int idMenu);
+void insertFirstMenu(ListMenu &LM, addressMenu P);
+void insertLastMenu(ListMenu &LM, addressMenu P);
+void insertAfterMenu(ListMenu &LM, addressMenu Prec, addressMenu P);
+void insertMenuByHarga(ListMenu &LM, addressMenu P);
 
-// Komputasi
-int hitungTotal(adrPelanggan P);
-double hitungRata(adrPelanggan P);
+bool deleteFirstMenu(ListMenu &LM, addressMenu &P);
+bool deleteLastMenu(ListMenu &LM, addressMenu &P);
+bool deleteAfterMenu(ListMenu &LM, addressMenu Prec, addressMenu &P);
+bool deleteMenuByID(ListMenu &LM, const string &idMenu, string &namaMenuDihapus);
+
+addressMenu findMenu(const ListMenu &LM, const string &idMenu);
+void printAllMenu(const ListMenu LM);
 
 #endif
+
+
