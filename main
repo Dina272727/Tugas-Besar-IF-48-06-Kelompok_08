@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+#include "menu_103012400043.h"
+#include "pelanggan_103012300425.h"
+
+void menuAdmin_103012400043(ListMenu &LM, ListPelanggan &LP);
+void menuUser_103012300425(ListMenu &LM, ListPelanggan &LP);
+
+int main() {
+    ListMenu LM;
+    ListPelanggan LP;
+
+    createListMenu_103012400043(LM);
+    createListPelanggan_103012300425(LP);
+
+    int pilih;
+    do {
+        cout << "\n===== SISTEM RESTORAN =====\n";
+        cout << "1. Login Admin\n";
+        cout << "2. Menu Pelanggan\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih: ";
+        cin >> pilih;
+
+        if (pilih == 1) menuAdmin_103012400043(LM, LP);
+        else if (pilih == 2) menuUser_103012300425(LM, LP);
+
+    } while (pilih != 0);
+
+    cout << "Program selesai.\n";
+    return 0;
+}
+
+
