@@ -1,25 +1,19 @@
-#ifndef PELANGGAN_H
-#define PELANGGAN_H
+#ifndef PELANGGAN_103012300425H
+#define PELANGGAN_103012300425H
 
 #include <string>
-#include "menu.h"
+#include "menu_103012400043.h" 
 using namespace std;
 
 struct ElmPelanggan;
-struct ElmPesanan;
-
 typedef ElmPelanggan* addressPelanggan;
-typedef ElmPesanan* addressPesanan;
-
-struct ElmPesanan {
-    addressMenu menu;
-    addressPesanan next;
-};
 
 struct ElmPelanggan {
     string idPelanggan;
     string namaPelanggan;
-    addressPesanan firstPesanan;
+
+    addressMenu firstPesanan;
+    addressMenu lastPesanan;
 
     addressPelanggan next;
     addressPelanggan prev;
@@ -30,30 +24,28 @@ struct ListPelanggan {
     addressPelanggan last;
 };
 
-void createListPelanggan(ListPelanggan &LP);
-addressPelanggan alokasiPelanggan(const string &id, const string &nama);
-addressPesanan alokasiPesanan(addressMenu m);
+void createListPelanggan_103012300425(ListPelanggan &LP);
+addressPelanggan alokasiPelanggan_103012300425(const string &id, const string &nama);
 
-void insertFirstPelanggan(ListPelanggan &LP, addressPelanggan P);
-void insertLastPelanggan(ListPelanggan &LP, addressPelanggan P);
-void insertAfterPelanggan(addressPelanggan Prec, addressPelanggan P);
+void insertFirstPelanggan_103012300425(ListPelanggan &LP, addressPelanggan P);
+void insertLastPelanggan_103012300425(ListPelanggan &LP, addressPelanggan P);
+void insertAfterPelanggan_103012300425(addressPelanggan Prec, addressPelanggan P);
 
-bool deleteFirstPelanggan(ListPelanggan &LP, addressPelanggan &P);
-bool deleteLastPelanggan(ListPelanggan &LP, addressPelanggan &P);
-bool deleteAfterPelanggan(addressPelanggan Prec, addressPelanggan &P);
+bool deleteFirstPelanggan_103012300425(ListPelanggan &LP, addressPelanggan &P);
+bool deleteLastPelanggan_103012300425(ListPelanggan &LP, addressPelanggan &P);
+bool deleteAfterPelanggan_103012300425(addressPelanggan Prec, addressPelanggan &P);
 
-addressPelanggan findPelanggan(const ListPelanggan &LP, const string &idPelanggan);
+addressPelanggan findPelanggan_103012300425(const ListPelanggan &LP, const string &idPelanggan);
 
-void tambahPesanan(addressPelanggan pel, addressMenu m);
-bool hapusItemPesanan(addressPelanggan pel, const string &idMenu);
-void hapusSemuaPesanan(addressPelanggan pel);
+void tambahPesanan_103012300425(addressPelanggan pel, addressMenu m);
+bool hapusItemPesanan_103012300425(addressPelanggan pel, const string &idMenu);
+void hapusSemuaPesanan_103012300425(addressPelanggan pel);
 
-void printAllPelanggan(const ListPelanggan &LP);
-void printPelangganAndPesanan(const ListPelanggan &LP);
-void printPesananWithFormat(addressPelanggan pel);
+void printAllPelanggan_103012300425(const ListPelanggan &LP);
+void printPelangganAndPesanan_103012300425(const ListPelanggan &LP);
+void printPesananWithFormat_103012300425(addressPelanggan pel);
 
-void removeMenuFromAllPelanggan(ListPelanggan &LP, const string &idMenu);
+void removeMenuFromAllPelanggan_103012300425(ListPelanggan &LP, const string &idMenu);
 
 #endif
-
 
